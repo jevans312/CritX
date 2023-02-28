@@ -40,8 +40,11 @@ void GLWindow::create(const char* title, int width, int height)
 	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 4);
 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 4);
 	SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 4);
-// 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
+ 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 2);
 
 	SDL_WM_SetCaption(title, 0);
 // 	SDL_WM_SetIcon(SDL_LoadBMP("other files/critterding icon.png"), 0);
@@ -70,9 +73,9 @@ void GLWindow::create(const char* title, int width, int height)
 		surface = SDL_SetVideoMode( w_width, w_height, w_bpp, vidFlags | SDL_RESIZABLE );
 
 	cerr << "SDL: subsystem initialized\n";
-// 	cerr << "Video " << front.width() << "x" << front.height() << "x" << int(front.getSurface()->format->BitsPerPixel) << "\n";
-// 	cerr << "Render Mode: " <<  ((hwaccel) ? "Direct Rendering" : "Software Rendering")   << "\n";
-// 	cerr << "Hardware Blit Acceleration: " << ((vidInfo->blit_hw) ? "Yes": "No") << "\n";
+ 	cerr << "Video width: " << w_width << " height: " << w_height << "\n";
+ 	cerr << "Render Mode: " <<  ((hwaccel) ? " Direct Rendering" : " Software Rendering")   << "\n";
+ 	cerr << "Hardware Blit Acceleration: " << ((vidInfo->blit_hw) ? "Yes": "No") << "\n";
 }
 
 void GLWindow::resize()

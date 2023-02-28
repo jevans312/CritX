@@ -1,18 +1,14 @@
 
 #include "gldebugdrawer.h"
-// #include "GLDebugFont.h"
-// #include "GlutStuff.h"
-
-
-
 #include <stdio.h> //printf debugging
+
 GLDebugDrawer::GLDebugDrawer()
 :m_debugMode(0)
 {
 
 }
 
-void	GLDebugDrawer::drawLine(const btVector3& from,const btVector3& to,const btVector3& fromColor, const btVector3& toColor)
+void GLDebugDrawer::drawLine(const btVector3 &from, const btVector3 &to, const btVector3 &fromColor, const btVector3 &toColor)
 {
 	glBegin(GL_LINES);
 		glColor3f(fromColor.getX(), fromColor.getY(), fromColor.getZ());

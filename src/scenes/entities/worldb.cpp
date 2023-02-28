@@ -976,7 +976,7 @@ void WorldB::drawWithinCritterSight(CritterB *c)
 							btVector3 halfExtent = static_cast<const btBoxShape*>(f->body.bodyparts[b]->shape)->getHalfExtentsWithMargin();
 							glScaled(halfExtent[0], halfExtent[1], halfExtent[2]);
 
-							Displaylists::Instance()->call(0);
+							Displaylists::Instance()->call(); //0
 
 					glPopMatrix();
 				}
@@ -997,7 +997,7 @@ void WorldB::drawWithinCritterSight(CritterB *c)
 								btVector3 halfExtent = static_cast<const btBoxShape*>(f->body.mouths[b]->shape)->getHalfExtentsWithMargin();
 								glScaled(halfExtent[0], halfExtent[1], halfExtent[2]);
 
-								Displaylists::Instance()->call(1);
+								Displaylists::Instance()->call(); //1
 
 						glPopMatrix();
 					}
@@ -1047,7 +1047,7 @@ void WorldB::drawWithinCritterSight(unsigned int cid)
 						btVector3 halfExtent = static_cast<const btBoxShape*>(f->body.bodyparts[b]->shape)->getHalfExtentsWithMargin();
 						glScaled(halfExtent[0], halfExtent[1], halfExtent[2]);
 
-						Displaylists::Instance()->call(0);
+						Displaylists::Instance()->call(); //0
 
 				glPopMatrix();
 			}
@@ -1063,7 +1063,7 @@ void WorldB::drawWithinCritterSight(unsigned int cid)
 						btVector3 halfExtent = static_cast<const btBoxShape*>(f->body.mouths[j]->shape)->getHalfExtentsWithMargin();
 						glScaled(halfExtent[0], halfExtent[1], halfExtent[2]);
 
-						Displaylists::Instance()->call(1);
+						Displaylists::Instance()->call(); //1
 
 				glPopMatrix();
 			}
@@ -1095,7 +1095,7 @@ void WorldB::drawWithinCritterSight(unsigned int cid)
 							btVector3 halfExtent = static_cast<const btBoxShape*>(f->body.bodyparts[b]->shape)->getHalfExtentsWithMargin();
 							glScaled(halfExtent[0], halfExtent[1], halfExtent[2]);
 
-							Displaylists::Instance()->call(0);
+							Displaylists::Instance()->call(); //0
 
 					glPopMatrix();
 				}
@@ -1118,7 +1118,7 @@ void WorldB::drawWithinCritterSight(unsigned int cid)
 								btVector3 halfExtent = static_cast<const btBoxShape*>(f->body.mouths[b]->shape)->getHalfExtentsWithMargin();
 								glScaled(halfExtent[0], halfExtent[1], halfExtent[2]);
 
-								Displaylists::Instance()->call(1);
+								Displaylists::Instance()->call(); //1
 
 						glPopMatrix();
 					}

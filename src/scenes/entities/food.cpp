@@ -28,7 +28,7 @@ void Food::draw()
 
 			glColor4f( color.r, color.g, color.b, color.a );
 			glScaled(halfExtent[0], halfExtent[1], halfExtent[2]);
-			Displaylists::Instance()->call(1);
+			Displaylists::Instance()->call(); //1
 
 	glPopMatrix();
 }

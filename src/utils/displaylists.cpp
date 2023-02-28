@@ -1,30 +1,28 @@
 #include "displaylists.h"
 
-Displaylists* Displaylists::Instance() 
-{
+Displaylists* Displaylists::Instance() {
 	static Displaylists t;
 	return &t;
 }
 
-Displaylists::Displaylists()
-{
+Displaylists::Displaylists() {
 	generateList();
 }
 
-void Displaylists::call(unsigned int index)
-{
-	glCallList(displayLists+index);
+void Displaylists::call() {
+	glCallList(displayLists+0);
+	//glCallList(displayLists+index);
 }
 
-void Displaylists::generateList()
-{
+void Displaylists::generateList() {
 // 	cerr << "generating displaylists" << endl;
-	glDeleteLists(displayLists, 2);
-	displayLists = glGenLists(2);
+	glDeleteLists(displayLists, 1);
 
+	displayLists = glGenLists(1);
+
+	/*
 	// 0 = cube with the bottom missing
 	glNewList(displayLists,GL_COMPILE);
-
 		glBegin(GL_QUADS);
 			//Quad 1
 			glVertex3f( 1.0f, 1.0f, 1.0f);   //V2
@@ -57,12 +55,11 @@ void Displaylists::generateList()
 			glVertex3f(-1.0f,-1.0f, 1.0f);   //V8
 			glVertex3f(-1.0f,-1.0f,-1.0f);   //V6
 		glEnd();
-
 	glEndList();
+	*/
 
 	// 0 = cube with the bottom missing
-	glNewList(displayLists+1,GL_COMPILE);
-
+	glNewList(displayLists,GL_COMPILE);
 		glBegin(GL_QUADS);
 			//Quad 1
 			glNormal3f( 1.0f, 0.0f, 0.0f);
@@ -101,19 +98,5 @@ void Displaylists::generateList()
 			glVertex3f(-1.0f,-1.0f, 1.0f);   //V8
 			glVertex3f(-1.0f,-1.0f,-1.0f);   //V6
 		glEnd();
-
 	glEndList();
-
-/*	// 1 = floor
-	glNewList(displayLists+2,GL_COMPILE);
-
-		glColor4f( 0.0f, 0.0f, 1.0f, 0.0f );
-		glBegin(GL_QUADS);
-			glVertex3f( 0.0f, 0.0f, 0.0f);
-			glVertex3f( 0.0f, 0.0f, 1.0f);
-			glVertex3f( 1.0f, 0.0f, 1.0f);
-			glVertex3f( 1.0f, 0.0f, 0.0f);
-		glEnd();
-
-	glEndList();*/
 }

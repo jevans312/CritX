@@ -17,10 +17,10 @@ class Hud : public Panel
 		WorldB*		world;
 		
 	private:
-		void		drawBorders();
+		void				drawBorders();
 		Critterselection	*critterselection;
 		vector<Widget*>		cbuttons;
-		btScalar viewposition[16];
+		btScalar			viewposition[16];
 };
 
 #endif

@@ -178,22 +178,20 @@ void Evolution::draw() {
 		float lightwaveFrameSine = sin(lightwaveFrame)  * 0.2f;
 		GLfloat lightColor[] = { lightwaveFrameSine, lightwaveFrameSine, lightwaveFrameSine, 0.0f };*/
 		GLfloat lightColor[] = { 0.04f, 0.04f, 0.04f, 0.0f };
-
-		GLfloat lightPos[] = { 0.5f * *world->worldsizeX, 50.0f, 0.5f * *world->worldsizeY, 1.0f };
-// 		GLfloat lightPos1[] = { 0.0f, 20.0f, 0.5f*settings->getCVar("worldsizeY"), 1.0f };
-// 		GLfloat lightPos2[] = { settings->getCVar("worldsizeX")+1.0f, 20, 0.5f*settings->getCVar("worldsizeY"), 1.0f };
+		GLfloat lightPos[] = { 0.5f * *world->worldsizeX, 50.0f, 0.5f * *world->worldsizeY, 2.0f };
 		glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor);
 		glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
-// 		glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor);
-// 		glLightfv(GL_LIGHT0, GL_POSITION, lightPos1);
-// 		glLightfv(GL_LIGHT1, GL_DIFFUSE, lightColor);
-// 		glLightfv(GL_LIGHT1, GL_POSITION, lightPos2);
+
+		GLfloat lightColor1[] = { 0.04f, 0.04f, 0.04f, 0.0f };
+		GLfloat lightPos1[] = { 0.0f, 40.0f, 0.0f, 2.0f };
+		glLightfv(GL_LIGHT1, GL_DIFFUSE, lightColor);
+		glLightfv(GL_LIGHT1, GL_POSITION, lightPos1);
 
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_COLOR_MATERIAL);
 		glEnable(GL_LIGHTING);
 		glEnable(GL_LIGHT0);
-// 		glEnable(GL_LIGHT1);
+ 		glEnable(GL_LIGHT1);
  		glEnable(GL_CULL_FACE);
  		glCullFace(GL_BACK);
 
@@ -223,8 +221,7 @@ void Evolution::draw() {
 
 		world->camera.place();
 
-		if ( *drawscene == 1 )
-		{
+		if ( *drawscene == 1 ) {
 			world->drawWithGrid();
 
 			// draw selected info
@@ -247,19 +244,19 @@ void Evolution::draw() {
 				glPushMatrix(); 
 				glMultMatrixf(position);
 
-					glColor3f(1.5f, 1.5f, 1.5f);
+					glColor3f(1.0f, 1.0f, 1.0f);
 					glBegin(GL_LINES);
-						glVertex2f(-0.2f, 0.05f);
-						glVertex2f(-0.2f,-0.05f);
+						glVertex2f(-0.5f, 0.5f);
+						glVertex2f(0.5f, 0.5f);
 
-						glVertex2f(-0.2f,-0.05f);
-						glVertex2f(0.2f, -0.05f);
+						glVertex2f(0.5f, 0.5f);
+						glVertex2f(0.5f, -0.5f);
 
-						glVertex2f(0.2f, -0.05f);
-						glVertex2f(0.2f,  0.05f);
+						glVertex2f(0.5, -0.5f);
+						glVertex2f(-0.5f,  -0.5f);
 
-						glVertex2f(0.2f,  0.05f);
-						glVertex2f(-0.2f, 0.05f);
+						glVertex2f(-0.5f,  -0.5f);
+						glVertex2f(-0.5f, 0.5f);
 					glEnd();
 
 				glPopMatrix();
@@ -272,7 +269,7 @@ void Evolution::draw() {
 		glDisable(GL_DEPTH_TEST);
 		glDisable (GL_LIGHTING);
 		glDisable(GL_LIGHT0);
-// 		glDisable(GL_LIGHT1);
+ 		glDisable(GL_LIGHT1);
 		glDisable(GL_COLOR_MATERIAL);
 // 		glDisable(GL_DITHER);
  		glDisable(GL_CULL_FACE);

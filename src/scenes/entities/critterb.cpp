@@ -171,7 +171,7 @@ void CritterB::draw(bool drawFaces)
 				btVector3 halfExtent = boxShape->getHalfExtentsWithMargin();
 				glScaled(halfExtent[0], halfExtent[1], halfExtent[2]);
 
-				Displaylists::Instance()->call(1);
+				Displaylists::Instance()->call(); //0
 
 		glPopMatrix();
 	}
@@ -189,7 +189,7 @@ void CritterB::draw(bool drawFaces)
 					btVector3 halfExtent = boxShape->getHalfExtentsWithMargin();
 					glScaled(halfExtent[0], halfExtent[1], halfExtent[2]);
 
-					Displaylists::Instance()->call(1);
+					Displaylists::Instance()->call(); //0
 
 			glPopMatrix();
 		}
