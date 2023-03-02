@@ -168,8 +168,8 @@ void Evolution::draw() {
 
 	// 3D
 // 		GLfloat ambientLight[] = {0.5f, 0.5f, 0.5f, 1.0f};
-		GLfloat ambientLight[] = {0.6f, 0.6f, 0.6f, 0.0f};
-		glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
+		//GLfloat ambientLight[] = {0.6f, 0.6f, 0.6f, 0.0f};
+		//glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
 // 		GLfloat lightColor[] = { 0.1f, 0.1f, 0.1f, 1.0f };
 
 /*		lightwaveFrame+=0.001f;
@@ -177,14 +177,14 @@ void Evolution::draw() {
 			lightwaveFrame = 0;
 		float lightwaveFrameSine = sin(lightwaveFrame)  * 0.2f;
 		GLfloat lightColor[] = { lightwaveFrameSine, lightwaveFrameSine, lightwaveFrameSine, 0.0f };*/
-		GLfloat lightColor[] = { 0.04f, 0.04f, 0.04f, 0.0f };
-		GLfloat lightPos[] = { 0.5f * *world->worldsizeX, 50.0f, 0.5f * *world->worldsizeY, 2.0f };
+		GLfloat lightColor[] = { 0.04f, 0.04f, 0.04f, 1.0f };
+		GLfloat lightPos[] = { 0.5f * *world->worldsizeX, 50.0f, 0.5f * *world->worldsizeY, 1.0f };
 		glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor);
 		glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
 
-		GLfloat lightColor1[] = { 0.04f, 0.04f, 0.04f, 0.0f };
-		GLfloat lightPos1[] = { 0.0f, 40.0f, 0.0f, 2.0f };
-		glLightfv(GL_LIGHT1, GL_DIFFUSE, lightColor);
+		GLfloat lightColor1[] = { 0.04f, 0.04f, 0.04f, 1.0f };
+		GLfloat lightPos1[] = { 0.0f, 40.0f, 0.0f, 1.0f };
+		glLightfv(GL_LIGHT1, GL_DIFFUSE, lightColor1);
 		glLightfv(GL_LIGHT1, GL_POSITION, lightPos1);
 
 		glEnable(GL_DEPTH_TEST);
