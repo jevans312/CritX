@@ -56,55 +56,52 @@ Evolution::Evolution()
 	unsigned int speedup = 2;
 
 	// events
-	events->registerEvent(SDLK_TAB,		"swapspeciespanel", execcmd.gen("gui_togglepanel", "speciesview"), 0, 0, 0 );
-	events->registerEvent(SDLK_ESCAPE,	"swapexitpanel", execcmd.gen("gui_togglepanel", "exitpanel"), 0, 0, 0 );
-	events->registerEvent(SDLK_F1,		"swaphelpinfo", execcmd.gen("gui_togglepanel", "helpinfo"), 0, 0, 0 );
-	events->registerEvent(SDLK_F2,		"swapinfobar", execcmd.gen("gui_togglepanel", "infobar"), 0, 0, 0 );
-	events->registerEvent(SDLK_F3,		"swapinfostats", execcmd.gen("gui_togglepanel", "infostats"), 0, 0, 0 );
-	events->registerEvent(SDLK_F4,		"swaptextverbosemessage", execcmd.gen("gui_togglepanel", "textverbosemessage"), 0, 0, 0 );
-
-	events->registerEvent(SDLK_F5,		"swapstatsgraph", execcmd.gen("gui_togglepanel", "statsgraph"), 0, 0, 0 );
-	events->registerEvent(SDLK_F6,		"swapglobalsettingspanel", execcmd.gen("gui_togglepanel", "globalsettingspanel"), 0, 0, 0 );
-	events->registerEvent(SDLK_F7,		"swapsettingsbrainpanel", execcmd.gen("gui_togglepanel", "settingsbrainpanel"), 0, 0, 0 );
-	events->registerEvent(SDLK_F8,		"swaphud", execcmd.gen("gui_togglepanel", "hud"), 0, 0, 0 );
+	events->registerEvent(SDLK_TAB,			"swapspeciespanel", execcmd.gen("gui_togglepanel", "speciesview"), 0, 0, 0 );
+	events->registerEvent(SDLK_ESCAPE,		"swapexitpanel", execcmd.gen("gui_togglepanel", "exitpanel"), 0, 0, 0 );
 	
-	events->registerEvent(SDLK_r,		"toggle_drawscene", execcmd.gen("settings_increase", "drawscene"), 0, 0, 0 );
-	events->registerEvent(SDLK_h,		"swapcanvas", execcmd.gen("gui_toggle"), 0, 0, 0 );
+	events->registerEvent(SDLK_F1,			"swaphelpinfo", execcmd.gen("gui_togglepanel", "helpinfo"), 0, 0, 0 );
+	events->registerEvent(SDLK_F2,			"swapinfobar", execcmd.gen("gui_togglepanel", "infobar"), 0, 0, 0 );
+	events->registerEvent(SDLK_F3,			"swapinfostats", execcmd.gen("gui_togglepanel", "infostats"), 0, 0, 0 );
+	events->registerEvent(SDLK_F4,			"swaptextverbosemessage", execcmd.gen("gui_togglepanel", "textverbosemessage"), 0, 0, 0 );
+	events->registerEvent(SDLK_F5,			"swapstatsgraph", execcmd.gen("gui_togglepanel", "statsgraph"), 0, 0, 0 );
+	events->registerEvent(SDLK_F6,			"swapglobalsettingspanel", execcmd.gen("gui_togglepanel", "globalsettingspanel"), 0, 0, 0 );
+	events->registerEvent(SDLK_F7,			"swapsettingsbrainpanel", execcmd.gen("gui_togglepanel", "settingsbrainpanel"), 0, 0, 0 );
+	events->registerEvent(SDLK_F8,			"swaphud", execcmd.gen("gui_togglepanel", "hud"), 0, 0, 0 );
+	
+	events->registerEvent(SDLK_r,			"toggle_drawscene", execcmd.gen("settings_increase", "drawscene"), 0, 0, 0 );
+	events->registerEvent(SDLK_h,			"swapcanvas", execcmd.gen("gui_toggle"), 0, 0, 0 );
 
-// 	events->registerEvent(SDLK_F5,		"dec_critters", execcmd.gen("settings_decrease", "mincritters"), delay, 0, speedup );
-// 	events->registerEvent(SDLK_F6,		"inc_critters", execcmd.gen("settings_increase", "mincritters"), delay, 0, speedup );
-// 	events->registerEvent(SDLK_F7,		"dec_killhalftrigger", execcmd.gen("settings_decrease", "critter_killhalfat"), delay, 0, speedup );
-// 	events->registerEvent(SDLK_F8,		"inc_killhalftrigger", execcmd.gen("settings_increase", "critter_killhalfat"), delay, 0, speedup );
-	events->registerEvent(SDLK_KP_DIVIDE,	"dec_camerasensitivity", execcmd.gen("settings_decrease", "camerasensitivity"), delay, 0, speedup );
-	events->registerEvent(SDLK_KP_MULTIPLY,	"inc_camerasensitivity", execcmd.gen("settings_increase", "camerasensitivity"), delay, 0, speedup );
-	events->registerEvent(SDLK_c,		"inc_colormode", execcmd.gen("settings_increase", "colormode"), 0, 0, 0 );
+	//events->registerEvent(SDLK_KP_DIVIDE,	"dec_camerasensitivity", execcmd.gen("settings_decrease", "camerasensitivity"), delay, 0, speedup );
+	//events->registerEvent(SDLK_KP_MULTIPLY,	"inc_camerasensitivity", execcmd.gen("settings_increase", "camerasensitivity"), delay, 0, speedup );
+	events->registerEvent(SDLK_c,			"inc_colormode", execcmd.gen("settings_increase", "colormode"), 0, 0, 0 );
 
-	events->registerEvent(SDLK_F9,		"dec_body_mutationrate", execcmd.gen("settings_decrease", "body_mutationrate"), delay, 0, speedup );
-	events->registerEvent(SDLK_F10,		"inc_body_mutationrate", execcmd.gen("settings_increase", "body_mutationrate"), delay, 0, speedup );
-	events->registerEvent(SDLK_F11,		"dec_brain_mutationrate", execcmd.gen("settings_decrease", "brain_mutationrate"), delay, 0, speedup );
-	events->registerEvent(SDLK_F12,		"inc_brain_mutationrate", execcmd.gen("settings_increase", "brain_mutationrate"), delay, 0, speedup );
+	//events->registerEvent(SDLK_F9,			"dec_body_mutationrate", execcmd.gen("settings_decrease", "body_mutationrate"), delay, 0, speedup );
+	//events->registerEvent(SDLK_F10,			"inc_body_mutationrate", execcmd.gen("settings_increase", "body_mutationrate"), delay, 0, speedup );
+	//events->registerEvent(SDLK_F11,			"dec_brain_mutationrate", execcmd.gen("settings_decrease", "brain_mutationrate"), delay, 0, speedup );
+	//events->registerEvent(SDLK_F12,			"inc_brain_mutationrate", execcmd.gen("settings_increase", "brain_mutationrate"), delay, 0, speedup );
 	
 	events->registerEvent(SDLK_BACKSPACE,	"resetcamera", execcmd.gen("camera_resetposition"), 0, 0, 0 );
 
-	events->registerEvent(SDLK_PAGEUP,	"keyloadAllCritters", execcmd.gen("loadallcritters"), 0, 0, 0 );
+	events->registerEvent(SDLK_PAGEUP,		"keyloadAllCritters", execcmd.gen("loadallcritters"), 0, 0, 0 );
 	events->registerEvent(SDLK_PAGEDOWN,	"keysaveAllCritters", execcmd.gen("saveallcritters"), 0, 0, 0 );
-	events->registerEvent(SDLK_i,		"keyinsertCritter", execcmd.gen("insertcritter"), 0, 0, 0 );
-	events->registerEvent(SDLK_k,		"keykillhalfOfcritters", execcmd.gen("killhalfofcritters"), 0, 0, 0 );
+	events->registerEvent(SDLK_i,			"keyinsertCritter", execcmd.gen("insertcritter"), 0, 0, 0 );
+	events->registerEvent(SDLK_k,			"keykillhalfOfcritters", execcmd.gen("killhalfofcritters"), 0, 0, 0 );
 
-	events->registerEvent(SDLK_MINUS,	"keydecreaseenergy", execcmd.gen("decreaseenergy"), delay, 0, speedup );
-	events->registerEvent(SDLK_PLUS,	"keyincreaseenergy", execcmd.gen("increaseenergy"), delay, 0, speedup );
-	events->registerEvent(SDLK_KP_MINUS,	"keydecreaseenergykp", execcmd.gen("decreaseenergy"), delay, 0, speedup );
-	events->registerEvent(SDLK_KP_PLUS,	"keyincreaseenergykp", execcmd.gen("increaseenergy"), delay, 0, speedup );
+	//events->registerEvent(SDLK_MINUS,		"keydecreaseenergy", execcmd.gen("decreaseenergy"), delay, 0, speedup );
+	//events->registerEvent(SDLK_PLUS,		"keyincreaseenergy", execcmd.gen("increaseenergy"), delay, 0, speedup );
+	//events->registerEvent(SDLK_KP_MINUS,	"keydecreaseenergykp", execcmd.gen("decreaseenergy"), delay, 0, speedup );
+	//events->registerEvent(SDLK_KP_PLUS,		"keyincreaseenergykp", execcmd.gen("increaseenergy"), delay, 0, speedup );
 
 	sharedTimer* t = events->registerSharedtimer( 20 );
 	
-	events->registerEvent(SDLK_HOME,	"keycamera_moveup", execcmd.gen("camera_moveup"), t );
-	events->registerEvent(SDLK_END,		"keycamera_movedown", execcmd.gen("camera_movedown"), t );
-	events->registerEvent(SDLK_UP,		"keycamera_moveforward", execcmd.gen("camera_moveforward"), t );
-	events->registerEvent(SDLK_DOWN,	"keycamera_movebackward", execcmd.gen("camera_movebackward"), t );
+	//events->registerEvent(SDLK_KP_PLUS,	"keycamera_moveup", execcmd.gen("camera_moveforwards"), t );
+	//events->registerEvent(SDLK_KP_MINUS,"keycamera_movedown", execcmd.gen("camera_movebackwards"), t );
+	events->registerEvent(SDLK_UP,		"keycamera_moveforward", execcmd.gen("camera_moveup"), t );
+	events->registerEvent(SDLK_DOWN,	"keycamera_movebackward", execcmd.gen("camera_movedown"), t );
 	events->registerEvent(SDLK_LEFT,	"keycamera_moveleft", execcmd.gen("camera_moveleft"), t );
 	events->registerEvent(SDLK_RIGHT,	"keycamera_moveright", execcmd.gen("camera_moveright"), t );
 
+	/*
 	events->registerEvent(SDLK_KP2,		"keycamera_lookup", execcmd.gen("camera_lookup"), t );
 	events->registerEvent(SDLK_KP8,		"keycamera_lookdown", execcmd.gen("camera_lookdown"), t );
 	events->registerEvent(SDLK_KP4,		"keycamera_lookleft", execcmd.gen("camera_lookleft"), t );
@@ -112,6 +109,7 @@ Evolution::Evolution()
 
 	events->registerEvent(SDLK_KP1,		"keycamera_rollleft", execcmd.gen("camera_rollleft"), t );
 	events->registerEvent(SDLK_KP3,		"keycamera_rollright", execcmd.gen("camera_rollright"), t );
+	*/
 
 	events->registerEvent(SDLK_f,		"inc_fullscreen", execcmd.gen("settings_increase", "fullscreen"), 0, 0, 0 );
 

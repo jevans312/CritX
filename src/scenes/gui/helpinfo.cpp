@@ -6,9 +6,9 @@ Helpinfo::Helpinfo()
 	position.x = 50;
 	position.y = 35;
 	v_width = 420;
-	v_height = 520;
-	halfboxwidth = 210;
-	halfboxheight = 260;
+	v_height = 460;
+	//halfboxwidth = 210;
+	//halfboxheight = 260;
 }
 
 void Helpinfo::draw()
@@ -58,26 +58,20 @@ void Helpinfo::draw()
 		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "pagedown", "save all critters into \"~/.critterding/save/profile/(time)\"");
 
 		glColor3f(1.0f, 1.0f, 1.0f);
-
+		
+		heightpos += vspace + 3; printInfoLine(heightpos, widthpos1, widthpos2, "", "");
 		heightpos += vspace + 3; printInfoLine(heightpos, widthpos1, widthpos2, "Camera Operations", "");
 
 		glColor3f(0.7f, 0.7f, 0.7f);
 
-		heightpos += vspace + 3; printInfoLine(heightpos, widthpos1, widthpos2, "/", "dec camera sensitivity");
-		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "*", "inc camera sensitivity");
-		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "backspace", "reset camera");
-		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "arrow up", "move camera forward");
-		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "arrow down", "move camera backwards");
-		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "arrow left", "strafe left");
-		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "arrow right", "strafe right");
-		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "home/end", "move up / down");
-// 		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "End", "move down");
-		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "numpad 2/8", "look up / down");
-// 		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "NumKey 8", "look down");
-		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "numpad 4/6", "look left / right");
-// 		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "NumKey 6", "look right");
-		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "numpad 1/3", "roll left / right");
-// 		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "NumKey 3", "roll right");
+		//heightpos += vspace + 3; printInfoLine(heightpos, widthpos1, widthpos2, "/", "dec camera sensitivity");
+		//heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "*", "inc camera sensitivity");
+		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "Backspace", "Reset camera");
+		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "Arrow Up", "Move camera up");
+		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "Arrow Down", "Move camera down");
+		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "Arrow Left", "Move camera left");
+		heightpos += vspace; printInfoLine(heightpos, widthpos1, widthpos2, "Arrow Right", "Move camera right");
+
 
 // 		glDisable(GL_TEXTURE_2D);
 	}
