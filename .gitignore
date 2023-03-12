@@ -1,3 +1,4 @@
+.kdev4/
 .vscode/
 Makefile.in
 aclocal.m4
