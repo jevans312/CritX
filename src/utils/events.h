@@ -1,7 +1,7 @@
 #ifndef EVENTS_H
 #define EVENTS_H
 
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
 #include <string>
 #include <iostream>
 #include <sstream>
@@ -14,41 +14,41 @@ using namespace std;
 
 struct sharedTimer
 {
-	bool			active;
+	bool				active;
 	unsigned int		responsetime;
 	unsigned int		elapsed;
 };
 
 struct event
 {
-	string			name;
-	bool			active;
-	bool			bindbystring;
+	string				name;
+	bool				active;
+	bool				bindbystring;
 	long unsigned int 	bindkey;
-	string			bindstring;
+	string				bindstring;
 
-	cmdsettings		command;
+	cmdsettings			command;
 
 	// private timer
 	unsigned int		responsetime;
-	int			fresponsetime;
+	int					fresponsetime;
 	unsigned int		minfresponsetime;
 	unsigned int		fresponseinterval;	// degredation interval
 	unsigned int		elapsed;
 
 	// shared timer
-	bool			timerisshared;
+	bool				timerisshared;
 	sharedTimer*		stimer;
 };
 
 class Events
 {
 	public:
-		static Events*		Instance();
+		static Events*	Instance();
 		~Events();
 
-		void			registerEvent(SDLKey key, const string& name, const cmdsettings& cmd, sharedTimer* stimer);
-		void			registerEvent(SDLKey key, const string& name, const cmdsettings& cmd, unsigned int responsetime, unsigned int minfresponsetime, unsigned int fresponseinterval);
+		void			registerEvent(SDL_Keycode key, const string& name, const cmdsettings& cmd, sharedTimer* stimer);
+		void			registerEvent(SDL_Keycode key, const string& name, const cmdsettings& cmd, unsigned int responsetime, unsigned int minfresponsetime, unsigned int fresponseinterval);
 		void			registerEvent(const string& name, const cmdsettings& cmd, unsigned int responsetime, unsigned int minfresponsetime, unsigned int fresponseinterval);
 
 		void			activateEvent(const long unsigned int key);
@@ -56,7 +56,7 @@ class Events
 		void			deactivateEvent(const long unsigned int key);
 		void			deactivateEvent(const string& key);
 
-		sharedTimer*		registerSharedtimer(unsigned int responsetime);
+		sharedTimer*	registerSharedtimer(unsigned int responsetime);
 		void			processSharedTimers();
 		void			handlecommands();
 	protected:

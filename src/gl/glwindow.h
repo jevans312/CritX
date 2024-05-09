@@ -1,9 +1,10 @@
 #ifndef GLWINDOW_H
 #define GLWINDOW_H
 
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
+//nclude <SDL/SDL_opengl.h>
 // #include <SDL/SDL_opengl.h>
-// #include <GL/glx.h>
+#include <GL/glew.h>
 
 #include "../gui/textprinter.h"
 #include "../utils/displaylists.h"
@@ -25,6 +26,7 @@ class GLWindow {
 
 	private:
 		//	Resize Window
+		SDL_Window *window;
 		void resize();
 		void toggleFs();
 		unsigned int w_bpp;		// Bits Per Pixel. With XFree86, highest = 24
@@ -33,8 +35,7 @@ class GLWindow {
 		int n_width;
 		int n_height;
 		unsigned int fs;
-		SDL_Surface* surface;
-		const SDL_VideoInfo* vidInfo;
+		//const SDL_VideoInfo* vidInfo;
 		int vidFlags;
 		bool hwaccel;
 		const unsigned int* settingsfs;

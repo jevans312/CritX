@@ -1,7 +1,7 @@
 #ifndef EVOLUTION_H
 #define EVOLUTION_H
 
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
 #include "../gl/glscene.h"
 #include "../utils/timer.h"
 #include "../utils/sleeper.h"
@@ -32,12 +32,11 @@ class Evolution : public GLScene {
 		~Evolution();
 
 		bool pause;
-
 		void draw();
 
 		// glwindow passes events to the scene
-		void handlekeyPressed(const SDLKey& key);
-		void handlekeyReleased(const SDLKey& key);
+		void handlekeyPressed(const SDL_Keycode& key);
+		void handlekeyReleased(const SDL_Keycode& key);
 		void handlemousebuttonPressed(int x, int y, const int&);
 		void handlemousebuttonReleased(int x, int y, const int&);
 		void handleMouseMotionRel(int x, int y);
@@ -53,7 +52,6 @@ class Evolution : public GLScene {
 		Commands *cmd;
 		Events *events;
 		Sleeper sleeper;
-
 		Maincanvas canvas;
 
 		int mouse_x;

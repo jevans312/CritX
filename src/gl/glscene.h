@@ -2,11 +2,11 @@
 #define GLSCENE_H
 
 // Standard OpenGL/GLX header files
-#include <GL/gl.h>
-#include <SDL/SDL.h>
+//#include <GL/gl.h>
+#include <SDL2/SDL.h>
 
 /* Headers needed for keys used in the program */
-#include <SDL/SDL_keysym.h>
+//#include <SDL/SDL_keysym.h>
 // #include <X11/Xlib.h>
 // #include <X11/keysym.h> // FIXME GET RID OF KEYSIM AND XLIB
 
@@ -19,8 +19,8 @@ class GLScene {
 		// This is the drawing function. Whatever needs to be drawn, goes in this function
 		virtual void draw();
 		// glwindow passes events to the scene
-		virtual void handlekeyPressed(const SDLKey& key);
-		virtual void handlekeyReleased(const SDLKey& key);
+		virtual void handlekeyPressed(const SDL_Keycode& key);
+		virtual void handlekeyReleased(const SDL_Keycode& key);
 
 		virtual void handlemousebuttonPressed(int x, int y, const int&);
 		virtual void handlemousebuttonReleased(int x, int y, const int&);

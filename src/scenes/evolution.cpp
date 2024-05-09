@@ -313,7 +313,7 @@ void Evolution::draw() {
 		glPopMatrix();
 		}
 
-		SDL_GL_SwapBuffers();		
+		//SDL_GL_SwapBuffers();
 	}
 
 	if ( world->critters.size() == 0 && settings->getCVar("exit_if_empty") )
@@ -323,7 +323,7 @@ void Evolution::draw() {
 	}
 }
 
-void Evolution::handlekeyPressed(const SDLKey& key)
+void Evolution::handlekeyPressed(const SDL_Keycode& key)
 {
 	if ( pause && key != SDLK_p )
 		return;
@@ -338,7 +338,8 @@ void Evolution::handlekeyPressed(const SDLKey& key)
 #ifdef _WIN32
 				SDL_WarpMouse(0,0);
 #endif
-				SDL_WM_GrabInput(SDL_GRAB_ON);
+				//SDL_WM_GrabInput(SDL_GRAB_ON);
+				SDL_SetRelativeMouseMode(SDL_TRUE);
 				SDL_ShowCursor(SDL_DISABLE);
 				// clear remaining poll events
 				{ SDL_Event e; while (SDL_PollEvent(&e)) {} };
@@ -348,8 +349,9 @@ void Evolution::handlekeyPressed(const SDLKey& key)
 			}
 			else
 			{
+				SDL_SetRelativeMouseMode(SDL_FALSE);
 				SDL_ShowCursor(SDL_ENABLE);
-				SDL_WM_GrabInput(SDL_GRAB_OFF);
+				//SDL_WM_GrabInput(SDL_GRAB_OFF);
 			}
 		}
 			break;
@@ -379,7 +381,7 @@ void Evolution::handlekeyPressed(const SDLKey& key)
 	}
 }
 
-void Evolution::handlekeyReleased(const SDLKey& key)
+void Evolution::handlekeyReleased(const SDL_Keycode& key)
 {
 	events->deactivateEvent(key);
 }
@@ -387,18 +389,17 @@ void Evolution::handlekeyReleased(const SDLKey& key)
 void Evolution::handlemousebuttonPressed(int x, int y, const int& button)
 {
 // 	cerr << "button " << button << " clicked at " << x << "x" << y << endl;
-	if ( !mouselook )
-	{
+	if ( !mouselook ) {
 		canvas.buttonPress(button);
-		if ( button == 1 )
+		if ( button == SDL_BUTTON_LEFT )
 			world->selectBody( x, y );
-		else if ( button == 2 )
+		else if ( button == SDL_BUTTON_MIDDLE )
 			world->resetCamera();
-		else if ( button == 3 )
+		else if ( button == SDL_BUTTON_RIGHT )
 			world->pickBody( x, y );
-		else if ( button == 4 )
+		else if ( button == SDL_BUTTON_X1 )
 			world->moveInMouseDirection(true);
-		else if ( button == 5 )
+		else if ( button == SDL_BUTTON_X2 )
 			world->moveInMouseDirection(false);
 	}
 }
@@ -407,9 +408,9 @@ void Evolution::handlemousebuttonReleased(int x, int y, const int& button)
 {
 // 	cerr << "button " << button << " released at " << x << "x" << y << endl;
 	canvas.buttonRelease(button);
-	if ( button == 1 )
+	if ( button == SDL_BUTTON_LEFT )
 		;
-	else if ( button == 3 )
+	else if ( button == SDL_BUTTON_RIGHT )
 		world->mousepicker->detach();
 }
 

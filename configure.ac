@@ -30,15 +30,15 @@ case "$host" in
 			AC_SUBST(OBJCFLAGS)]
 		)
 		;;
-		
+
         *-*-mingw*)
-                HOST_LIBS="-lmingw32 -lopengl32 -lfreetype -lSDLmain -lSDL -mwindows"
+                HOST_LIBS="-lmingw32 -lopengl32 -lGL -lGLU -lGLEW -lfreetype -lSDLmain -lSDL2 -mwindows"
 		SDLMAIN=""
 		OS=WIN32
                 AC_MSG_RESULT(win32)
                 ;;
         *)
-                HOST_LIBS="-lGL -lSDL"
+                HOST_LIBS="-lGL -lGLU -lGLEW -lSDL2"
 		SDLMAIN=""
                 AC_MSG_RESULT(generic unix)
 		OS=UNIX

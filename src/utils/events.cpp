@@ -1,6 +1,6 @@
 #include "events.h"
 
-Events* Events::Instance() 
+Events* Events::Instance()
 {
 	static Events t;
 	return &t;
@@ -22,7 +22,7 @@ sharedTimer* Events::registerSharedtimer(unsigned int responsetime)
 	return t;
 }
 
-void Events::registerEvent(SDLKey key, const string& name, const cmdsettings& cmd, sharedTimer* stimer)
+void Events::registerEvent(SDL_Keycode key, const string& name, const cmdsettings& cmd, sharedTimer* stimer)
 {
 	// create a new event and a pointer to it
 	events.push_back(event());
@@ -39,7 +39,7 @@ void Events::registerEvent(SDLKey key, const string& name, const cmdsettings& cm
 	e->stimer = stimer;
 }
 
-void Events::registerEvent(SDLKey key, const string& name, const cmdsettings& cmd, unsigned int responsetime, unsigned int minfresponsetime, unsigned int fresponseinterval)
+void Events::registerEvent(SDL_Keycode key, const string& name, const cmdsettings& cmd, unsigned int responsetime, unsigned int minfresponsetime, unsigned int fresponseinterval)
 {
 	// create a new event and a pointer to it
 	events.push_back(event());

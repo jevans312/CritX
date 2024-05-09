@@ -13,11 +13,11 @@ void GLScene::draw()
 {
 }
 
-void GLScene::handlekeyPressed(const SDLKey& key)
+void GLScene::handlekeyPressed(const SDL_Keycode& key)
 {
 }
 
-void GLScene::handlekeyReleased(const SDLKey& key)
+void GLScene::handlekeyReleased(const SDL_Keycode& key)
 {
 }
 

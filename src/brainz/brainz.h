@@ -31,7 +31,8 @@ class Brainz
 		
 		// input / output accessor/mutators
 			vector<sensorNeuron>	Inputs;
-			vector<motorNeuron>	Outputs;
+			vector<motorNeuron>		Outputs;
+
 		// vectors
 			vector<NeuronInterz>	Neurons;
 
