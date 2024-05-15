@@ -374,9 +374,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/scenes/entities/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign src/scenes/entities/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu src/scenes/entities/Makefile
+	  $(AUTOMAKE) --foreign src/scenes/entities/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \

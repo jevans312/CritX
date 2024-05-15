@@ -382,9 +382,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/scenes/gui/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign src/scenes/gui/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu src/scenes/gui/Makefile
+	  $(AUTOMAKE) --foreign src/scenes/gui/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \

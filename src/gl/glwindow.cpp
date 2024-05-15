@@ -7,20 +7,21 @@ GLWindow::GLWindow() {
 void GLWindow::create(const char* title, int width, int height) {
 	// gl version
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, 0);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 
 	// data and buffer sizes
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
- 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
+ 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
 	// antialiasing
+	SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 2);
 
@@ -31,10 +32,6 @@ void GLWindow::create(const char* title, int width, int height) {
 
 	w_width = width;
 	w_height = height;
-
-	n_width = width;
-	n_height = height;
-
 	Settings::Instance()->winWidth = &w_width;
 	Settings::Instance()->winHeight = &w_height;
 
@@ -49,55 +46,14 @@ void GLWindow::create(const char* title, int width, int height) {
     window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w_width, w_height, windowFlags);
     SDL_GLContext glContext = SDL_GL_CreateContext(window);
     SDL_GL_MakeCurrent(window, glContext);
-    SDL_GL_SetSwapInterval(1); //Enable vsync
+    SDL_GL_SetSwapInterval(1); //0) vsync off 1) vsync -1)adaptive vsync
 
-	/*
-	vidInfo = SDL_GetVideoInfo();
-	
-	w_bpp = vidInfo->vfmt->BitsPerPixel;
-	
-	if ( !vidInfo )
-	{
-		cerr << "Cannot get video information: " <<  SDL_GetError() << endl;
-		exit(1);
-	}
+	//Window icon
+	//SDL_Surface *icon = SDL_IM("../share/critterding/pixmaps/cd.bmp");
+	//SDL_SetWindowIcon(window, icon);
+	//SDL_FreeSurface(icon);
 
-	vidFlags = SDL_OPENGL | SDL_GL_DOUBLEBUFFER | SDL_HWPALETTE;
-
-	hwaccel = false;
-	if( vidInfo->hw_available )
-	{
-		hwaccel = true;
-		vidFlags |= SDL_HWSURFACE;
-	}
-	else
-		vidFlags |= SDL_SWSURFACE;
-
-        if( vidInfo->blit_hw != 0 )
-                vidFlags |= SDL_HWACCEL;
-	*/
-	//string pixmappath = Settings::Instance()->binarypath;
-	//pixmappath.append( "../share/critterding/pixmaps/cd.bmp" );
-	SDL_Surface *icon = SDL_LoadBMP("../share/critterding/pixmaps/cd.bmp");
-	SDL_SetWindowIcon(window, icon);
-	//SDL_WM_SetIcon(SDL_LoadBMP(pixmappath.c_str()), 0);
-/*
-	w_width = width;
-	w_height = height;
-
-	n_width = width;
-	n_height = height;
-
-	Settings::Instance()->winWidth = &w_width;
-	Settings::Instance()->winHeight = &w_height;
-
-	settingsfs = Settings::Instance()->getCVarPtr("fullscreen");
-	fs = *settingsfs;
-	if ( fs == 1 )
-		surface = SDL_SetVideoMode( w_width, w_height, w_bpp, SDL_FULLSCREEN | SDL_OPENGL );
-	else
-		surface = SDL_SetVideoMode( w_width, w_height, w_bpp, SDL_RESIZABLE | SDL_OPENGL );
-*/
+	//Solve many problems associated with opengl's many modules and version
 	GLenum err = glewInit();
 	cout << '\n';
 	cout << "====== OpenGL ======" << '\n';
@@ -105,29 +61,14 @@ void GLWindow::create(const char* title, int width, int height) {
     cout << "Renderer: " << glGetString(GL_RENDERER) << '\n';
     cout << "Version: " << glGetString(GL_VERSION) << '\n';
     cout << "GLEW: " << ((GLEW_OK ==  err)?glewGetString(GLEW_VERSION):glewGetErrorString(err)) << '\n';
-
-	/*
-	cerr << "SDL: subsystem initialized\n";
- 	cerr << "Video width: " << w_width << " height: " << w_height << "\n";
- 	cerr << "Render Mode: " <<  ((hwaccel) ? " Direct Rendering" : " Software Rendering")   << "\n";
- 	cerr << "Hardware Blit Acceleration: " << ((vidInfo->blit_hw) ? "Yes": "No") << "\n";
-	*/
 }
 
 
-void GLWindow::resize()
-{
+void GLWindow::resize() {
 	if ( w_height == 0 ) w_height = 1;
 	if ( w_width == 0 ) w_width = 1;
 
 	SDL_SetWindowSize(window, w_width, w_height);
-
-	/*
-#ifndef _WIN32
-	SDL_FreeSurface(surface);
-	surface = SDL_SetVideoMode( w_width, w_height, w_bpp, vidFlags | SDL_RESIZABLE );
-#endif
-	*/
 }
 
 
@@ -214,7 +155,8 @@ void GLWindow::runGLScene(GLScene* glscene)
 		glscene->draw();
 		SDL_GL_SwapWindow(window);
 	}
-        SDL_Quit();
+
+	SDL_Quit();
 	exit(0);
 }
 
