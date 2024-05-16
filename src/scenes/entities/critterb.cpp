@@ -159,7 +159,7 @@ void CritterB::draw(bool drawFaces)
 	{
 		body.bodyparts[j]->myMotionState->m_graphicsWorldTrans.getOpenGLMatrix(position);
 
-		glPushMatrix(); 
+		glPushMatrix();
 		glMultMatrixf(position);
 
 			if ( *colormode == 1 )
@@ -167,11 +167,11 @@ void CritterB::draw(bool drawFaces)
 			else
 				glColor4f( genotype->bodyArch->color.r, genotype->bodyArch->color.g, genotype->bodyArch->color.b, genotype->bodyArch->color.a );
 
-				const btBoxShape* boxShape = static_cast<const btBoxShape*>(body.bodyparts[j]->shape);
-				btVector3 halfExtent = boxShape->getHalfExtentsWithMargin();
-				glScaled(halfExtent[0], halfExtent[1], halfExtent[2]);
+			const btBoxShape* boxShape = static_cast<const btBoxShape*>(body.bodyparts[j]->shape);
+			btVector3 halfExtent = boxShape->getHalfExtentsWithMargin();
+			glScaled(halfExtent[0], halfExtent[1], halfExtent[2]);
 
-				Displaylists::Instance()->call(); //0
+			Displaylists::Instance()->call(); //0
 
 		glPopMatrix();
 	}
@@ -180,16 +180,16 @@ void CritterB::draw(bool drawFaces)
 		for( unsigned int j=0; j < body.mouths.size(); j++)
 		{
 			body.mouths[j]->ghostObject->getWorldTransform().getOpenGLMatrix(position);
-			glPushMatrix(); 
+			glPushMatrix();
 			glMultMatrixf(position);
 
-					glColor4f( 1.0f, 0.0f, 0.0f, 0.0f );
+				glColor4f( 1.0f, 0.0f, 0.0f, 0.0f );
 
-					const btBoxShape* boxShape = static_cast<const btBoxShape*>(body.mouths[j]->shape);
-					btVector3 halfExtent = boxShape->getHalfExtentsWithMargin();
-					glScaled(halfExtent[0], halfExtent[1], halfExtent[2]);
+				const btBoxShape* boxShape = static_cast<const btBoxShape*>(body.mouths[j]->shape);
+				btVector3 halfExtent = boxShape->getHalfExtentsWithMargin();
+				glScaled(halfExtent[0], halfExtent[1], halfExtent[2]);
 
-					Displaylists::Instance()->call(); //0
+				Displaylists::Instance()->call(); //0
 
 			glPopMatrix();
 		}

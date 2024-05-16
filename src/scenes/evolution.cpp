@@ -1,9 +1,11 @@
 #ifdef _WIN32
 	#include <unistd.h>
 #endif
-#include "evolution.h"
 
-# include <math.h>
+#include <math.h>
+#include "evolution.h"
+#include "modes/race.h"
+#include "modes/roundworld.h"
 
 Evolution::Evolution()
 {
@@ -234,7 +236,7 @@ void Evolution::draw() {
 			for ( unsigned int i=0; i < world->critterselection->clist.size(); i++ )
 			{
 				trans.setOrigin(world->critterselection->clist[i]->body.mouths[0]->ghostObject->getWorldTransform().getOrigin());
-				trans.getOrigin().setY(trans.getOrigin().getY()+0.5f);
+				trans.getOrigin().setY(trans.getOrigin().getY());
 				trans.setBasis(world->camera.position.getBasis());
 				trans *= up;
 				trans.getOpenGLMatrix(position);

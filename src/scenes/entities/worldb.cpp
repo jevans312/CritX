@@ -93,8 +93,8 @@ WorldB::WorldB()
 // 	m_dynamicsWorld->setGravity( btVector3(0.0f, -50.0f, 0.0f) );
 
 	m_dynamicsWorld->getSolverInfo().m_solverMode = SOLVER_USE_WARMSTARTING + SOLVER_SIMD;
-	
-	m_dynamicsWorld->getSolverInfo().m_numIterations = 8;
+
+	//m_dynamicsWorld->getSolverInfo().m_numIterations = 8;
 	// raycast
 	raycast = new Raycast(m_dynamicsWorld);
 
@@ -237,7 +237,7 @@ void WorldB::process()
 	  }
 
 	// do a bullet step
-		m_dynamicsWorld->stepSimulation(0.016667f, 0, 0.016667f);
+		m_dynamicsWorld->stepSimulation(0.016667f, 1, 0.016667f);
 // 		m_dynamicsWorld->stepSimulation(0.016667f);
 // 		m_dynamicsWorld->stepSimulation(Timer::Instance()->bullet_ms / 1000.f);
 // cerr << Timer::Instance()->bullet_ms << " : " << Timer::Instance()->bullet_ms / 1000.f << endl;
